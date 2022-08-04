@@ -32,7 +32,7 @@ function LoginScreen({ navigation }) {
   }
 
   if (isAuthenticating) {
-    return <LoadingOverlay message="Accediendo..." />;
+    return <LoadingOverlay message="Iniciando..." />;
   }
 
   return <AuthContent isLogin onAuthenticate={loginHandler} />;
