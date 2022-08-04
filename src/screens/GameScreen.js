@@ -4,6 +4,7 @@ import { useState, useEffect, useContext } from 'react';
 import { Audio } from 'expo-av';
 import GameButton from '../components/ui/GameButton';
 import { AuthContext } from '../store/auth-context';
+import { Colors } from '../constants/styles';
 
 
 function GameScreen() {
@@ -175,19 +176,19 @@ function GameScreen() {
 			icon: require("../../assets/temas/colores.png"),
 			name: "colores",
 			position: 1,
-			color: '#0000aa',
+			color: Colors.terciary,
 		},
 		{
 		  icon: require("../../assets/temas/numeros.png"),
 		  name: "numeros",
 		  position: 2,
-		  color: '#0000aa',
+		  color: Colors.terciary,
 		},
 		{
 		  icon: require("../../assets/temas/animales.png"),
 		  name: "animales",
 		  position: 3,
-		  color: '#0000aa',
+		  color: Colors.terciary,
 		}
 	];
 
@@ -196,19 +197,19 @@ function GameScreen() {
 			icon: require("../../assets/banderas/spain.png"),
 			name: "español",
 			position: 1,
-			color: '#0000aa',
+			color: Colors.terciary,
 		},
 		{
 		  icon: require("../../assets/banderas/uk.png"),
 		  name: "ingles",
 		  position: 2,
-		  color: '#0000aa',
+		  color: Colors.terciary,
 		},
 		{
 		  icon: require("../../assets/banderas/portugal.png"),
 		  name: "portugues",
 		  position: 3,
-		  color: '#0000aa',
+		  color: Colors.terciary,
 		}
 	];
 
@@ -217,7 +218,7 @@ function GameScreen() {
 			icon: require("../../assets/power-off.png"),
 			name: "poweroff",
 			position: 1,
-			color: 'red'
+			color: Colors.error500
 		}
 	]
 
