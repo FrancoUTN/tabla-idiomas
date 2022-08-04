@@ -151,7 +151,7 @@ function AnimatedSplashScreen({ image, onFinish }) {
           style={[
             StyleSheet.absoluteFill,
             {
-              backgroundColor: '#c30b64', // Manual
+              backgroundColor: '#52154E', // Manual
               // opacity: animation,
             },
           ]}

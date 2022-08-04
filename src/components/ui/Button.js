@@ -36,7 +36,6 @@ const styles = StyleSheet.create({
     fontFamily: 'FredokaOne_400Regular',
     textAlign: 'center',
     color: 'white',
-    fontSize: 16,
-    fontWeight: 'bold'
+    fontSize: 16
   },
 });
