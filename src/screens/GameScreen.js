@@ -53,7 +53,7 @@ function GameScreen() {
 			]
 		},
 	]
-	
+
 	const numeros = [
 		{
 			id: 0,
@@ -112,7 +112,7 @@ function GameScreen() {
 				require('../../assets/sonidos/en/red.mp3'),
 				require('../../assets/sonidos/pt/red.mp3'),
 			],
-			estilos: {				
+			estilos: {
 				backgroundColor: 'red',
 				height: altura
 			}
@@ -124,7 +124,7 @@ function GameScreen() {
 				require('../../assets/sonidos/en/yellow.mp3'),
 				require('../../assets/sonidos/pt/yellow.mp3'),
 			],
-			estilos: {				
+			estilos: {
 				backgroundColor: 'yellow',
 				height: altura
 			}
@@ -136,7 +136,7 @@ function GameScreen() {
 				require('../../assets/sonidos/en/green.mp3'),
 				require('../../assets/sonidos/pt/green.mp3'),
 			],
-			estilos: {				
+			estilos: {
 				backgroundColor: 'green',
 				height: altura
 			}
@@ -148,7 +148,7 @@ function GameScreen() {
 				require('../../assets/sonidos/en/blue.mp3'),
 				require('../../assets/sonidos/pt/blue.mp3'),
 			],
-			estilos: {				
+			estilos: {
 				backgroundColor: 'blue',
 				height: altura
 			}
@@ -160,14 +160,14 @@ function GameScreen() {
 				require('../../assets/sonidos/en/gray.mp3'),
 				require('../../assets/sonidos/pt/gray.mp3'),
 			],
-			estilos: {				
+			estilos: {
 				backgroundColor: 'gray',
 				height: altura
 			}
 		},
 	];
 
-	const temas = [		
+	const temas = [
 		{
 			icon: require("../../assets/temas/colores.png"),
 			name: "colores",
@@ -184,8 +184,8 @@ function GameScreen() {
 		  position: 3
 		}
 	];
-	  
-	const idiomas = [		
+
+	const idiomas = [
 		{
 			icon: require("../../assets/banderas/spain.png"),
 			name: "español",
@@ -207,42 +207,51 @@ function GameScreen() {
 		{
 			icon: require("../../assets/power-off.png"),
 			name: "poweroff",
-			position: 1
+			position: 1,
+			color: 'red'
 		}
 	]
 
 	// Idioma
 	const [idioma, setIdioma] = useState(0);
+	const [iconoIdioma, setIconoIdioma] = useState(require("../../assets/banderas/españa.png"));
 
 	function cambiarIdioma(lang) {
 		switch(lang) {
 			case "español":
 				setIdioma(0);
+				setIconoIdioma(require("../../assets/banderas/españa.png"));
 				break;
 			case "ingles":
 				setIdioma(1);
+				setIconoIdioma(require("../../assets/banderas/reino-unido.png"));
 				break;
 			case "portugues":
 				setIdioma(2);
+				setIconoIdioma(require("../../assets/banderas/portugal2.png"));
 				break;
-		}		
+		}
 	}
 
 	// Tema
 	const [items, setItems] = useState(animales);
+	const [iconoTema, setIconoTema] = useState(temas[2].icon);
 
 	function cambiarTema(categoria) {
 		switch(categoria) {
 			case "colores":
 				setItems(colores);
+				setIconoTema(temas[0].icon);
 				break;
 			case "numeros":
 				setItems(numeros);
+				setIconoTema(temas[1].icon);
 				break;
 			case "animales":
 				setItems(animales);
+				setIconoTema(temas[2].icon);
 				break;
-		}		
+		}
 	}
 
 	// Sonidos
@@ -253,11 +262,11 @@ function GameScreen() {
 		const { sound } = await Audio.Sound.createAsync(
 			sonido
 		);
-		setSound(sound);	
+		setSound(sound);
 		// console.log('Playing Sound');
 		await sound.playAsync();
 	}
-	
+
 	useEffect(() => {
 		return sound
 			? () => {
@@ -279,15 +288,21 @@ function GameScreen() {
 			<FloatingAction
 				actions={opciones}
 				position="left"
+				floatingIcon={require("../../assets/setting.png")}
 			/>
 			<FloatingAction
 				actions={idiomas}
 				onPressItem={name => cambiarIdioma(name)}
 				distanceToEdge={{vertical:300,horizontal:30}}
+				floatingIcon={iconoIdioma}
+				color='white'
+				iconWidth={20}
 			/>
 			<FloatingAction
 				actions={temas}
 				onPressItem={name => cambiarTema(name)}
+				floatingIcon={iconoTema}
+				color='white'
 			/>
 		</View>
 	)
