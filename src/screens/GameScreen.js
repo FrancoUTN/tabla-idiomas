@@ -1,11 +1,14 @@
 import { View } from 'react-native';
 import { FloatingAction } from "react-native-floating-action";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Audio } from 'expo-av';
 import GameButton from '../components/ui/GameButton';
+import { AuthContext } from '../store/auth-context';
 
 
 function GameScreen() {
+	const authCtx = useContext(AuthContext);
+
 	const animales = [
 		{
 			id: 0,
@@ -171,17 +174,20 @@ function GameScreen() {
 		{
 			icon: require("../../assets/temas/colores.png"),
 			name: "colores",
-			position: 1
+			position: 1,
+			color: '#0000aa',
 		},
 		{
 		  icon: require("../../assets/temas/numeros.png"),
 		  name: "numeros",
-		  position: 2
+		  position: 2,
+		  color: '#0000aa',
 		},
 		{
 		  icon: require("../../assets/temas/animales.png"),
 		  name: "animales",
-		  position: 3
+		  position: 3,
+		  color: '#0000aa',
 		}
 	];
 
@@ -189,17 +195,20 @@ function GameScreen() {
 		{
 			icon: require("../../assets/banderas/spain.png"),
 			name: "español",
-			position: 1
+			position: 1,
+			color: '#0000aa',
 		},
 		{
 		  icon: require("../../assets/banderas/uk.png"),
 		  name: "ingles",
-		  position: 2
+		  position: 2,
+		  color: '#0000aa',
 		},
 		{
 		  icon: require("../../assets/banderas/portugal.png"),
 		  name: "portugues",
-		  position: 3
+		  position: 3,
+		  color: '#0000aa',
 		}
 	];
 
@@ -289,6 +298,8 @@ function GameScreen() {
 				actions={opciones}
 				position="left"
 				floatingIcon={require("../../assets/setting.png")}
+				onPressItem={authCtx.logout}
+				color='#eeeeee'
 			/>
 			<FloatingAction
 				actions={idiomas}
