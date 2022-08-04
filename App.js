@@ -38,6 +38,7 @@ import AulaScreen from './src/screens/AulaScreen';
 // Inicializar App y Auth
 import './src/util/auth'
 import ModalScreen from "./src/screens/ModalScreen";
+import GameScreen from "./src/screens/GameScreen";
 
 
 // Instruct SplashScreen not to hide yet, we want to do this manually
@@ -99,18 +100,8 @@ function AuthenticatedStack() {
       }}
     >
       <Stack.Screen
-        name="Pasillo"
-        component={WelcomeScreen}
-        options={{
-          headerTitleStyle: {
-            fontFamily: 'Montserrat_500Medium'
-          },
-          headerRight: () => logoutIcon
-        }}
-      />
-      <Stack.Screen
-        name="Aula"
-        component={AulaScreen}
+        name="Juego (sacárselo)"
+        component={GameScreen}
         options={{
           headerTitleStyle: {
             fontFamily: 'Montserrat_500Medium'
