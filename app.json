@@ -24,7 +24,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#0000AA"
-      }
+      },
+      "package": "com.maxiterra.tablaidiomas"
     },
     "web": {
       "favicon": "./assets/favicon.png"
