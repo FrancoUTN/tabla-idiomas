@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     marginTop: 20
   },
   texto: {
-    fontFamily: 'Montserrat_500Medium',
+    fontFamily: 'FredokaOne_400Regular',
     color: 'white',
     textAlign: 'center',
     fontSize: 26

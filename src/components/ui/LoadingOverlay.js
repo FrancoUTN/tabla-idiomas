@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     padding: 32,
   },
   message: {
-    fontFamily: 'Montserrat_600SemiBold',
+    fontFamily: 'FredokaOne_400Regular',
     fontSize: 16,
     marginBottom: 12,
   },
