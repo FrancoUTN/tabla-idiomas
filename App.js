@@ -102,12 +102,7 @@ function AuthenticatedStack() {
       <Stack.Screen
         name="Juego (sacárselo)"
         component={GameScreen}
-        options={{
-          headerTitleStyle: {
-            fontFamily: 'Montserrat_500Medium'
-          },
-          headerRight: () => logoutIcon
-        }}
+        options={{headerShown: false}}
       />
     </Stack.Navigator>
   );
