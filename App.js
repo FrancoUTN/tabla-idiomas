@@ -152,7 +152,6 @@ function AnimatedSplashScreen({ image, onFinish }) {
             StyleSheet.absoluteFill,
             {
               backgroundColor: '#52154E', // Manual
-              // opacity: animation,
             },
           ]}
         >
@@ -161,11 +160,7 @@ function AnimatedSplashScreen({ image, onFinish }) {
               width: "100%",
               height: "100%",
               resizeMode: "contain", // Manual
-              transform: [
-                {
-                  scale: animation,
-                },
-              ],
+              opacity: animation
             }}
             source={image}
             onLoadEnd={onImageLoaded}
