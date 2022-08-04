@@ -99,8 +99,7 @@ export default function App() {
   }
 
   return (
-    <>
-      {/* <StatusBar style="light" /> */}
+    <>      
       {
         appLoading ?
         <AnimatedSplashScreen
@@ -108,7 +107,10 @@ export default function App() {
           onFinish={onFinishHandler}
         />
         :
-        <MainScreen />
+        <>
+          <StatusBar style="light" />
+          <MainScreen />
+        </>
       }
     </>
   );
