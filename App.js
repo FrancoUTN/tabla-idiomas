@@ -2,7 +2,6 @@ import { useContext, useCallback, useEffect, useMemo, useState } from "react";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
-import Constants from "expo-constants";
 import * as SplashScreen from "expo-splash-screen";
 import { Animated, StyleSheet, Text, View} from "react-native";
 import {
@@ -30,10 +29,7 @@ import {
 
 import { Colors } from './src/constants/styles';
 import LoginScreen from './src/screens/LoginScreen';
-import WelcomeScreen from './src/screens/WelcomeScreen';
 import AuthContextProvider, { AuthContext } from './src/store/auth-context';
-import IconButton from './src/components/ui/IconButton';
-import AulaScreen from './src/screens/AulaScreen';
 
 // Inicializar App y Auth
 import './src/util/auth'
@@ -81,16 +77,6 @@ function AuthStack() {
 }
 
 function AuthenticatedStack() {
-  const authCtx = useContext(AuthContext);
-  const logoutIcon = (
-    <IconButton
-      icon="power"
-      color='white'
-      size={24}
-      onPress={authCtx.logout}
-    />
-  );
-
   return (
     <Stack.Navigator
       screenOptions={{
