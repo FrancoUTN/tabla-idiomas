@@ -1,14 +1,55 @@
-import { View } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 import { FloatingAction } from "react-native-floating-action";
 import { useState, useEffect, useContext } from 'react';
 import { Audio } from 'expo-av';
+import * as ScreenOrientation from 'expo-screen-orientation'
+
 import GameButton from '../components/ui/GameButton';
 import { AuthContext } from '../store/auth-context';
 import { Colors } from '../constants/styles';
+import LoadingOverlay from '../components/ui/LoadingOverlay';
 
 
 function GameScreen() {
 	const authCtx = useContext(AuthContext);
+	const [orientacion, setOrientacion] = useState();
+
+	useEffect(
+		() => {
+			ScreenOrientation.getOrientationAsync().then(orientacion => {
+				if (orientacion == ScreenOrientation.Orientation.LANDSCAPE_LEFT) {
+					console.log("Izquierda")
+					setOrientacion('izquierda');
+				}
+				else if (orientacion == ScreenOrientation.Orientation.LANDSCAPE_RIGHT) {
+					console.log("Derecha")
+					setOrientacion('derecha');
+				}
+				else {
+					console.log("Vertical o UNKNOWN")
+					setOrientacion('vertical');
+				}
+			});
+
+			return ScreenOrientation.addOrientationChangeListener(
+				objeto => {
+					const orientacion = objeto.orientationInfo.orientation;
+					if (orientacion == ScreenOrientation.Orientation.LANDSCAPE_LEFT) {
+						console.log("Izquierda")
+						setOrientacion('izquierda');
+					}
+					else if (orientacion == ScreenOrientation.Orientation.LANDSCAPE_RIGHT) {
+						console.log("Derecha")
+						setOrientacion('derecha');
+					}
+					else {
+						console.log("Vertical o UNKNOWN")
+						setOrientacion('vertical');
+					}
+				}
+			).remove
+		},
+	[])
 
 	const animales = [
 		{
@@ -283,34 +324,81 @@ function GameScreen() {
 		playSound(sUrls[idioma]);
 	}
 
-	return (
-		<View style={{flex: 1}}>
+	if (orientacion == 'vertical') {
+		return (
 			<View style={{flex: 1}}>
-				{items.map(item => <GameButton key={item.id} item={item} buttonPress={buttonPressHandler}/>)}
+				<View style={{flex: 1}}>
+					{items.map(item => <GameButton key={item.id} item={item} buttonPress={buttonPressHandler}/>)}
+				</View>
+				<FloatingAction
+					// actions={opciones}
+					onPressMain={authCtx.logout}
+					floatingIcon={require("../../assets/power-off.png")}
+					color='#eeeeee'
+					position="left"
+					distanceToEdge={{vertical: 570, horizontal: 30}}
+					iconWidth={16}
+				/>
+				<FloatingAction
+					actions={idiomas}
+					onPressItem={name => cambiarIdioma(name)}
+					floatingIcon={iconoIdioma}
+					color='white'
+					iconWidth={20}
+					position="left"
+				/>
+				<FloatingAction
+					actions={temas}
+					onPressItem={name => cambiarTema(name)}
+					floatingIcon={iconoTema}
+					color='white'
+				/>
 			</View>
-			<FloatingAction
-				actions={opciones}
-				position="left"
-				floatingIcon={require("../../assets/setting.png")}
-				onPressItem={authCtx.logout}
-				color='#eeeeee'
-			/>
-			<FloatingAction
-				actions={idiomas}
-				onPressItem={name => cambiarIdioma(name)}
-				distanceToEdge={{vertical:300,horizontal:30}}
-				floatingIcon={iconoIdioma}
-				color='white'
-				iconWidth={20}
-			/>
-			<FloatingAction
-				actions={temas}
-				onPressItem={name => cambiarTema(name)}
-				floatingIcon={iconoTema}
-				color='white'
-			/>
-		</View>
-	)
+		);
+	}
+	else if (orientacion == 'derecha' || orientacion == 'izquierda') {
+		return (
+			<View style={{flex: 1}}>
+				<View style={{flex: 1, flexDirection: 'row'}}>
+					{items.map(item => <GameButton key={item.id} item={item} buttonPress={buttonPressHandler}/>)}
+				</View>
+				<FloatingAction
+					onPressMain={authCtx.logout}
+					floatingIcon={require("../../assets/power-off.png")}
+					color='#eeeeee'
+					iconWidth={16}
+					position="left"
+					distanceToEdge={{vertical: 275, horizontal: 30}}
+				/>
+				<FloatingAction
+					actions={idiomas}
+					onPressItem={name => cambiarIdioma(name)}
+					floatingIcon={iconoIdioma}
+					color='white'
+					iconWidth={20}
+					position="left"
+				/>
+				<FloatingAction
+					actions={temas}
+					onPressItem={name => cambiarTema(name)}
+					floatingIcon={iconoTema}
+					color='white'
+				/>
+			</View>
+		);
+	}
+	else {
+		return (
+			<View style={{
+				flex: 1,
+				justifyContent: 'center',
+				alignItems: 'center',
+				backgroundColor: Colors.secondary
+			}}>
+				<ActivityIndicator size='large' color='white' />
+			</View>
+		);
+	}
 }
 
 export default GameScreen;
