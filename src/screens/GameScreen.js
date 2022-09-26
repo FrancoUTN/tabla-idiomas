@@ -106,8 +106,6 @@ function GameScreen() {
 		},
 	]
 
-	let altura = 135;
-
 	const colores = [
 		{
 			id: 0,
@@ -117,8 +115,7 @@ function GameScreen() {
 				require('../../assets/sonidos/pt/red.mp3'),
 			],
 			estilos: {
-				backgroundColor: 'red',
-				height: altura
+				backgroundColor: 'red'
 			}
 		},
 		{
@@ -129,8 +126,7 @@ function GameScreen() {
 				require('../../assets/sonidos/pt/yellow.mp3'),
 			],
 			estilos: {
-				backgroundColor: 'yellow',
-				height: altura
+				backgroundColor: 'yellow'
 			}
 		},
 		{
@@ -141,8 +137,7 @@ function GameScreen() {
 				require('../../assets/sonidos/pt/green.mp3'),
 			],
 			estilos: {
-				backgroundColor: 'green',
-				height: altura
+				backgroundColor: 'green'
 			}
 		},
 		{
@@ -153,8 +148,7 @@ function GameScreen() {
 				require('../../assets/sonidos/pt/blue.mp3'),
 			],
 			estilos: {
-				backgroundColor: 'blue',
-				height: altura
+				backgroundColor: 'blue'
 			}
 		},
 		{
@@ -165,8 +159,7 @@ function GameScreen() {
 				require('../../assets/sonidos/pt/gray.mp3'),
 			],
 			estilos: {
-				backgroundColor: 'gray',
-				height: altura
+				backgroundColor: 'gray'
 			}
 		},
 	];
@@ -291,8 +284,8 @@ function GameScreen() {
 	}
 
 	return (
-		<View>
-			<View>
+		<View style={{flex: 1}}>
+			<View style={{flex: 1}}>
 				{items.map(item => <GameButton key={item.id} item={item} buttonPress={buttonPressHandler}/>)}
 			</View>
 			<FloatingAction
