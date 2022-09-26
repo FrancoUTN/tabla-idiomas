@@ -2,7 +2,7 @@
   "expo": {
     "name": "tabla-idiomas",
     "slug": "tabla-idiomas",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
@@ -28,6 +28,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "6f738313-a0e6-4a69-a32d-5cd69af8c522"
+      }
     }
   }
 }
