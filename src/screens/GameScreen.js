@@ -336,7 +336,8 @@ function GameScreen() {
 					floatingIcon={require("../../assets/power-off.png")}
 					color='#eeeeee'
 					position="left"
-					distanceToEdge={{vertical: 570, horizontal: 30}}
+					// distanceToEdge={{vertical: 570, horizontal: 30}}
+					distanceToEdge={{vertical: 260, horizontal: 30}} // ME RINDO.
 					iconWidth={16}
 				/>
 				<FloatingAction
@@ -368,7 +369,7 @@ function GameScreen() {
 					color='#eeeeee'
 					iconWidth={16}
 					position="left"
-					distanceToEdge={{vertical: 275, horizontal: 30}}
+					distanceToEdge={{vertical: 260, horizontal: 30}}
 				/>
 				<FloatingAction
 					actions={idiomas}
